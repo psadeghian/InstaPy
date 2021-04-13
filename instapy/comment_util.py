@@ -391,7 +391,7 @@ def verify_commented_image(browser, link, owner, logger):
         commenter = None
         comment = None
         data = browser.execute_script(
-            "return window.__additionalData[Object.keys(window.__additionalData)].data."
+            "return window._sharedData.entry_data.PostPage[0]"
             "graphql.shortcode_media.edge_media_to_parent_comment"
         )
         for value in data["edges"]:
