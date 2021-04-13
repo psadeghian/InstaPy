@@ -337,17 +337,17 @@ def is_commenting_enabled(browser, logger):
 
     try:
         comments_disabled = browser.execute_script(
-            "return window.__additionalData[Object.keys(window.__additionalData)[0]].data"
+            "return window._sharedData.entry_data.PostPage[0]"
             ".graphql.shortcode_media.comments_disabled"
         )
 
     except WebDriverException:
         try:
-            # browser.execute_script("location.reload()")
-            # update_activity(browser, state=None)
+            browser.execute_script("location.reload()")
+            update_activity(browser, state=None)
 
             comments_disabled = browser.execute_script(
-                "return window.__additionalData[Object.keys(window.__additionalData)[0]].data"
+                "return window._sharedData.entry_data.PostPage[0]"
                 ".graphql.shortcode_media.comments_disabled"
             )
 
